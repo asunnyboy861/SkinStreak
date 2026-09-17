@@ -1,0 +1,29 @@
+# Secrets / confidential — NEVER push
+.env
+keytext*.md
+COMPETITOR_REPORT.md
+GLMSecret.txt
+Secrets.plist
+*.p8
+*.pem
+*.mobileprovision
+
+# Original Chinese guide (source doc, not for public repo)
+TR-*.MD
+
+# Xcode / macOS noise
+.DS_Store
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad
+DerivedData/
+build/
+Build/
+Pods/
+*.ipa
+*.dSYM.zip
+*.dSYM
+.swiftpm
+.build
+
+# StoreKit config is KEPT (needed for dev/testing): SkinStreak.storekit not ignored
