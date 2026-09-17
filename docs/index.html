@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkinStreak — the honest skincare coach. Ingredient conflict detection free forever, streak check-ins, and aligned before/after proof photos. Skincare that proves it works.">
+    <title>SkinStreak — Skincare that proves it works</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #1a1a1a; background: #FAF6F0; }
+        .landing-hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #7C9A83 0%, #5E7F68 100%); color: #fff; }
+        .landing-hero h1 { font-size: 3em; margin: 0 0 16px; color: #fff; border: none; }
+        .tagline { font-size: 1.4em; opacity: 0.95; margin: 0 0 12px; }
+        .hero-sub { font-size: 1.05em; opacity: 0.85; margin: 0 0 32px; }
+        .download-btn { display: inline-block; background: #000; color: #fff !important; padding: 14px 32px; border-radius: 12px; font-size: 1.1em; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; border: 2px dashed rgba(255,255,255,0.6); }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); text-decoration: none; }
+        .intro { max-width: 760px; margin: 0 auto; padding: 56px 20px 10px; text-align: center; font-size: 1.15em; color: #3d3d3d; }
+        .features { max-width: 960px; margin: 0 auto; padding: 50px 20px; text-align: center; }
+        .features h2 { font-size: 2em; margin-bottom: 40px; color: #1a1a1a; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature-card { background: #fff; padding: 30px 22px; border-radius: 16px; transition: transform 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-icon { font-size: 2.5em; margin-bottom: 12px; }
+        .feature-card h3 { margin: 0 0 8px; color: #1a1a1a; }
+        .feature-card p { color: #5a5a5a; margin: 0; }
+        .badge { display: inline-block; background: #7C9A83; color: #fff; font-size: 0.75em; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; letter-spacing: 0.04em; }
+        .pricing { max-width: 1000px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        .pricing h2 { font-size: 2em; margin-bottom: 12px; color: #1a1a1a; }
+        .pricing-sub { color: #5a5a5a; margin: 0 0 40px; }
+        .pricing-grid { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+        .pricing-card { background: #fff; padding: 30px 28px; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); min-width: 210px; max-width: 260px; text-align: left; }
+        .pricing-card.featured { border: 2px solid #7C9A83; }
+        .pricing-card h3 { margin: 0 0 4px; color: #1a1a1a; font-size: 1.1em; }
+        .price { font-size: 2.2em; font-weight: 700; margin: 8px 0; color: #1a1a1a; }
+        .price span { font-size: 0.42em; color: #666; font-weight: 500; }
+        .price-note { color: #666; margin: 0 0 14px; font-size: 0.88em; min-height: 44px; }
+        .pricing-card ul { margin: 0; padding-left: 18px; color: #4a4a4a; font-size: 0.92em; }
+        .pricing-card li { margin-bottom: 6px; }
+        .trial-note { max-width: 760px; margin: 28px auto 0; color: #5a5a5a; font-size: 0.95em; }
+        .disclaimer { max-width: 800px; margin: 0 auto; padding: 0 20px; text-align: center; color: #6b6b6b; font-size: 0.95em; }
+        .policy-links { max-width: 900px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        .policy-links h2 { font-size: 2em; margin-bottom: 30px; color: #1a1a1a; }
+        .policy-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .policy-card { background: #fff; padding: 16px 28px; border-radius: 12px; color: #4d6b55; text-decoration: none; font-weight: 600; transition: background 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .policy-card:hover { background: #eef3ef; text-decoration: none; }
+        .footer { text-align: center; padding: 40px 20px; border-top: 1px solid #e5ded4; color: #8a8a8a; font-size: 0.85em; }
+        .footer a { color: #4d6b55; }
+        @media (max-width: 600px) { .landing-hero h1 { font-size: 2em; } .tagline { font-size: 1.15em; } .pricing-grid { flex-direction: column; align-items: center; } .pricing-card { width: 100%; max-width: 320px; } }
+    </style>
+</head>
+<body>
+    <div class="landing-hero">
+        <h1>SkinStreak</h1>
+        <p class="tagline">Skincare that proves it works.</p>
+        <p class="hero-sub">Free to start. No beauty scores. No guilt trips.</p>
+        <!-- APP_STORE_ID: Replace href="#" with https://apps.apple.com/us/app/id<APP_STORE_ID>?mt=8 once the app is live on App Store Connect -->
+        <a id="download-btn" href="#" class="download-btn">Coming Soon to the App Store</a>
+    </div>
+
+    <p class="intro">SkinStreak is an honest skincare coach for iPhone. It tells you when your products clash, keeps your routine on track with nightly check-ins, and shows you whether your skin is actually improving — using your own baseline, not someone else's scoring scale.</p>
+
+    <div class="features">
+        <h2>Why SkinStreak?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧪</div>
+                <span class="badge">FREE FOREVER</span>
+                <h3>Ingredient Conflict Engine</h3>
+                <p>A local 200+ rule engine flags clashes like Retinol × Benzoyl Peroxide in a fraction of a second — and suggests how to separate them. Nobody else gives this away.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <span class="badge">HABIT LOOP</span>
+                <h3>Streaks That Never Shame</h3>
+                <p>Swipe through your nightly routine, keep the flame alive, and bank Streak Freezes for missed days. A broken streak starts again with kind words, not guilt.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <span class="badge">PROOF</span>
+                <h3>Progress, Not Ratings</h3>
+                <p>Guided, evenly-lit selfies are measured on-device against your own baseline — redness, texture, spots. Zero beauty scores. Ever. Fitzpatrick I–VI calibrated.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <span class="badge">PRIVACY</span>
+                <h3>Your Face Stays Yours</h3>
+                <p>Photos are analyzed on your device by default. Deep-scan uploads only happen after you explicitly confirm each photo — and one tap deletes everything.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <span class="badge">HONEST AI</span>
+                <h3>AI Explains, Never Decides</h3>
+                <p>Skin numbers come from a deterministic on-device pipeline. AI only writes the explanation, clearly labeled — it can never invent or alter your metrics.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏷️</div>
+                <span class="badge">TRANSPARENT</span>
+                <h3>Pricing Without Traps</h3>
+                <p>A 7-day full trial that falls back to the Free tier — never a silent rebill. Manage or cancel your subscription right inside the app in one tap.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pricing">
+        <h2>Simple, Transparent Pricing</h2>
+        <p class="pricing-sub">The conflict engine, barcode scanning, and check-ins are free forever — on every plan.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Free</h3>
+                <p class="price">$0</p>
+                <p class="price-note">Everything you need to start — no trial timer, no expiration.</p>
+                <ul>
+                    <li>Unlimited conflict detection</li>
+                    <li>Barcode scan + ingredient lookup</li>
+                    <li>Check-ins, streaks &amp; Streak Freeze</li>
+                    <li>Progress photos (on-device)</li>
+                    <li>2 deep AI scans per week</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Pro Annual</h3>
+                <p class="price">$19.99<span>/year</span></p>
+                <p class="price-note">7-day free trial, then $19.99/year. Less than half the cost of the yearly plans from typical beauty-scoring apps.</p>
+                <ul>
+                    <li>Unlimited deep AI scans</li>
+                    <li>AI smart scheduling &amp; skin cycling</li>
+                    <li>Weekly Proof report with attribution</li>
+                    <li>Photo comparison export &amp; share</li>
+                    <li>iCloud sync &amp; widgets</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>Pro Monthly</h3>
+                <p class="price">$3.99<span>/month</span></p>
+                <p class="price-note">All Pro features, monthly. Cancel anytime from Settings.</p>
+                <ul>
+                    <li>Unlimited deep AI scans</li>
+                    <li>AI smart scheduling &amp; skin cycling</li>
+                    <li>Weekly Proof report with attribution</li>
+                    <li>Photo comparison export &amp; share</li>
+                    <li>iCloud sync &amp; widgets</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>SkinStreak Forever</h3>
+                <p class="price">$39.99<span>once</span></p>
+                <p class="price-note">One-time buyout for BYO users: all Pro features forever, powered by your own API key.</p>
+                <ul>
+                    <li>All Pro features, forever</li>
+                    <li>Bring your own GLM API key</li>
+                    <li>Key stored on-device in Keychain</li>
+                    <li>AI calls ride your own channel</li>
+                </ul>
+            </div>
+        </div>
+        <p class="trial-note">The 7-day free trial is part of the Pro Annual plan and auto-renews unless cancelled at least 24 hours before it ends. When a trial or subscription ends, SkinStreak automatically falls back to the Free tier — your free features are never disabled.</p>
+    </div>
+
+    <p class="disclaimer">General wellness info, not medical advice. SkinStreak does not diagnose, treat, or monitor any skin condition. For medical concerns, consult a qualified professional.</p>
+
+    <div class="policy-links">
+        <h2>Legal &amp; Support</h2>
+        <div class="policy-grid">
+            <a href="support.html" class="policy-card">Support Center</a>
+            <a href="privacy.html" class="policy-card">Privacy Policy</a>
+            <a href="terms.html" class="policy-card">Terms of Use</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> SkinStreak. All rights reserved.</p>
+        <p>Contact: <a href="mailto:iocompile67692@gmail.com">iocompile67692@gmail.com</a></p>
+        <p>Product data from <a href="https://world.openbeautyfacts.org/" rel="noopener" target="_blank">Open Beauty Facts</a> (ODbL). Ingredient guidance informed by American Academy of Dermatology public resources.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinStreak - Privacy Policy</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+        h1 { color: #1a1a1a; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        .contact { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .highlight { background: #eef3ef; border-left: 4px solid #7C9A83; padding: 14px 18px; border-radius: 8px; color: #4a5a4e; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        footer { margin-top: 40px; font-size: 0.85em; color: #999; }
+        footer a { color: #4d6b55; }
+    </style>
+</head>
+<body>
+<h1>Privacy Policy</h1>
+<p><strong>Last updated: September 17, 2026</strong></p>
+
+<p>SkinStreak ("the app", "we", "us") is an honest skincare coach. This policy explains what data the app handles, where it is processed, and how you stay in control. The short version: <strong>your data lives on your device by default, your face photos are analyzed on your device, nothing is uploaded without your explicit per-photo confirmation, and one tap deletes everything.</strong></p>
+
+<div class="highlight"><strong>General wellness info, not medical advice.</strong> SkinStreak provides wellness information only. It does not diagnose, treat, or monitor any disease or skin condition.</div>
+
+<h2>1. Information We Collect</h2>
+<p>SkinStreak is local-first. The following data is created and stored <strong>on your device</strong> (and in your personal iCloud, only if you enable sync — see Section 6):</p>
+<ul>
+    <li><strong>Routine data:</strong> products you add, ingredients, conflict findings, scheduled routine slots, check-ins, streaks, and Streak Freeze usage.</li>
+    <li><strong>Profile data:</strong> skin type, goal, and Fitzpatrick phototype you choose in onboarding or Settings.</li>
+    <li><strong>Progress photos:</strong> guided selfies and the on-device skin metrics computed from them (redness ratio, texture variance, spot count). These are stored locally and are not uploaded by default.</li>
+    <li><strong>Purchase state:</strong> your subscription or one-time purchase status, managed by Apple's StoreKit. We never see your payment details.</li>
+</ul>
+<p><strong>We do not collect or require:</strong> your name, email address, phone number, precise location, contacts, or advertising identifiers. There is no account to create. We do not sell your data, and we do not use it for advertising — ever.</p>
+
+<h2>2. Face Photos &amp; Biometric Data (On-Device by Default)</h2>
+<ul>
+    <li><strong>On-device processing:</strong> all face-photo analysis — alignment QC (LightGuard), face segmentation, and the computation of redness, texture, and spot metrics — runs on your device using Apple's on-device machine learning. No photo leaves your device during this process.</li>
+    <li><strong>Upload only with explicit confirmation:</strong> the only feature that can send a photo off your device is the optional weekly deep AI scan. Before any upload, SkinStreak shows a per-photo confirmation dialog ("upload this one photo?"). If you decline, nothing is sent and the on-device daily analysis still works.</li>
+    <li><strong>No identity linkage:</strong> we never link biometric data (face geometry or face-derived metrics) to your identity. We cannot reconstruct who you are from anything the app processes, and we never attempt to.</li>
+    <li><strong>No retention of uploads for identification:</strong> when you confirm a deep-scan upload, the image is transmitted solely to generate your requested analysis and is not used to identify you, not used for advertising, and not sold or shared for any other purpose.</li>
+    <li><strong>Quality gate:</strong> captures that fail the light-quality check are never saved at all.</li>
+</ul>
+
+<h2>3. Illinois Residents — Your BIPA Rights</h2>
+<p>If you are in Illinois, the <strong>Illinois Biometric Information Privacy Act (BIPA)</strong> gives you specific rights regarding biometric identifiers such as face geometry:</p>
+<ul>
+    <li><strong>No written-release trap:</strong> SkinStreak processes face photos on your device and does not build a biometric identifier database about you. It does not link biometric data to your identity.</li>
+    <li><strong>Deletion on demand:</strong> you can exercise deletion at any time via Settings → <strong>Delete all my data</strong>, which immediately and permanently removes all locally stored photos and biometric-derived records. You may also request deletion by emailing us.</li>
+    <li><strong>No disclosure or profit:</strong> we never disclose, sell, or profit from biometric data.</li>
+</ul>
+
+<h2>4. One-Tap Deletion</h2>
+<p>Settings → <strong>Delete all my data</strong> permanently deletes all app data on your device: products, conflict logs, routine schedules, check-ins, streak history, reports, coach notes, and all locally stored face photos and their derived metrics. Deleting the app also removes its local data.</p>
+
+<h2>5. Your API Key (BYO)</h2>
+<p>If you buy <strong>SkinStreak Forever</strong> (BYO) and supply your own GLM API key, that key is stored <strong>only on your device, in the iOS Keychain</strong>. It is never transmitted to us, never logged, and never included in backups we control. AI requests made with your key go directly from your device to your chosen provider (Z.ai / GLM) and are governed by that provider's terms and privacy policy.</p>
+
+<h2>6. iCloud Sync (Optional, Opt-In)</h2>
+<p>Pro users can enable iCloud sync. Sync uses your personal <strong>CloudKit private database</strong> and is end-to-end encrypted by Apple — we have no access to it. Only non-biometric records (routine data, profile settings, check-ins) sync. <strong>Progress photos stay on your device by default;</strong> uploading photos to your own iCloud is an opt-in choice made in the app.</p>
+
+<h2>7. Third-Party Services</h2>
+<ul>
+    <li><strong>Apple:</strong> StoreKit (purchases), Apple Intelligence / Foundation Models (on-device AI copy on supported devices), CloudKit (optional sync), and App Store services. Apple's own privacy policy governs those interactions.</li>
+    <li><strong>Z.ai / GLM (only when you consent):</strong> the weekly deep AI scan — after your explicit per-photo confirmation — or your own BYO key sends the confirmed image and metrics to the GLM API to generate your deep report. Requests are never used to train models and are not shared further.</li>
+    <li><strong>Open Beauty Facts (OBF):</strong> barcode lookups fetch product and ingredient data from the Open Beauty Facts community database, licensed under the Open Database License (ODbL). Lookups contain the barcode only — not your identity.</li>
+</ul>
+<p>We do not embed third-party advertising SDKs or general-purpose analytics trackers.</p>
+
+<h2>8. Crash &amp; Diagnostic Data</h2>
+<p>If Apple collects crash/diagnostic data on our behalf through the standard App Store mechanism, it is processed by Apple and contains no biometric data. We use it only to fix bugs.</p>
+
+<h2>9. Children's Privacy</h2>
+<p>SkinStreak is not directed to children under 13 (and under 16 in the EEA/UK). We do not knowingly collect data from children. If you believe a child has provided data, contact us and we will help you delete it.</p>
+
+<h2>10. Your Rights &amp; Choices</h2>
+<ul>
+    <li><strong>Access &amp; portability:</strong> your data is already on your device; weekly reports and photos can be exported from the app.</li>
+    <li><strong>Deletion:</strong> one-tap "Delete all my data" (Section 4), or email us.</li>
+    <li><strong>Objection/opt-out:</strong> decline any photo upload prompt and disable iCloud sync at any time.</li>
+    <li>Depending on your location (e.g., CCPA/CPRA, GDPR), you may have additional rights. Because we hold no server-side profile about you, contacting us by email is the fastest way to exercise them.</li>
+</ul>
+
+<h2>11. Changes to This Policy</h2>
+<p>If we change this policy, we will update the date above and, for material changes, display a notice in the app before the change takes effect.</p>
+
+<h2>12. Contact Us</h2>
+<div class="contact">
+    <p>Questions about this privacy policy or your data? Contact us at <a href="mailto:iocompile67692@gmail.com">iocompile67692@gmail.com</a></p>
+</div>
+
+<footer>
+    <p><a href="index.html">Home</a> · <a href="support.html">Support</a> · <a href="terms.html">Terms of Use</a></p>
+    <p>&copy; <script>document.write(new Date().getFullYear())</script> SkinStreak. General wellness info, not medical advice.</p>
+</footer>
+</body>
+</html>
