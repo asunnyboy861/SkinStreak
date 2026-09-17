@@ -3,7 +3,7 @@ import SwiftData
 
 @Model
 final class UserProfile {
-    var skinType: String = "combination"
+    var skinType: String = "Combination"
     var goal: String = "General glow"
     var fitzpatrick: Int = 3
     var onboardingCompleted: Bool = false
@@ -11,7 +11,7 @@ final class UserProfile {
     var cyclingStartedAt: Date = Date()
     var createdAt: Date = Date()
 
-    init(skinType: String = "combination", goal: String = "General glow", fitzpatrick: Int = 3) {
+    init(skinType: String = "Combination", goal: String = "General glow", fitzpatrick: Int = 3) {
         self.skinType = skinType
         self.goal = goal
         self.fitzpatrick = fitzpatrick

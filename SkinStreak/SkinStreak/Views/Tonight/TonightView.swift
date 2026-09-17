@@ -13,7 +13,6 @@ struct TonightView: View {
     @State private var showScan = false
     @State private var banner: String?
     @State private var streakTrigger = 0
-    @State private var didInitialBuild = false
 
     private var today: Date { StreakEngine.startOfDay(Date()) }
     private var cycleNight: SkinCycleNight {
@@ -180,11 +179,15 @@ struct TonightView: View {
     private func rebuildSlots() {
         let night = cycleNight
         let todaySlots = allTodaySlots
-        let doneKeys = Set(todaySlots.filter { $0.status == "done" }.map { "\($0.session)|\($0.productName)" })
+        let liveProductNames = Set(products.map { $0.name })
         for slot in todaySlots where slot.status != "done" {
             modelContext.delete(slot)
         }
-        var existingKeys = doneKeys
+        // Remove completed slots whose product was deleted from the Cabinet.
+        for slot in todaySlots where slot.status == "done" && !liveProductNames.contains(slot.productName) {
+            modelContext.delete(slot)
+        }
+        var existingKeys = Set(todaySlots.filter { $0.status == "done" && liveProductNames.contains($0.productName) }.map { "\($0.session)|\($0.productName)" })
         for session in ["AM", "PM"] {
             let plans = TonightEngine.buildSlots(for: today, session: session, cycleNight: night, products: products)
             for plan in plans {
@@ -203,8 +206,6 @@ struct TonightView: View {
                 existingKeys.insert(key)
             }
         }
-        _ = didInitialBuild
-        didInitialBuild = true
     }
 
     private func complete(_ slot: RoutineSlot) {

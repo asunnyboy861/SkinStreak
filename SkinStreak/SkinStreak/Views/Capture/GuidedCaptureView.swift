@@ -195,7 +195,7 @@ struct GuidedCaptureView: View {
         guard status.isPass else {
             lightWarning = status
             isProcessing = false
-            Haptics.success()
+            Haptics.warning()
             return
         }
         guard let metrics = CVPipeline.analyze(imageData: data, fitzpatrick: profile.fitzpatrick) else {

@@ -52,8 +52,10 @@ final class OBFApiClient {
         if let cached = readCache(barcode: barcode) { return cached }
         let urlString = "https://world.openbeautyfacts.org/api/v2/product/\(barcode).json?fields=code,product_name,brands,ingredients_text,ingredients"
         guard let url = URL(string: urlString) else { return nil }
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 12
         do {
-            let (data, _) = try await session.data(from: url)
+            let (data, _) = try await session.data(for: request)
             let response = try JSONDecoder().decode(OBFProductResponse.self, from: data)
             guard response.status == 1, let payload = response.product else { return nil }
             let product = product(from: payload, fallbackBarcode: barcode)

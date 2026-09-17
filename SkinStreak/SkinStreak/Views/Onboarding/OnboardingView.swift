@@ -45,7 +45,7 @@ struct OnboardingView: View {
             .background(Theme.sand.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                if step < 3 {
+                if (1...2).contains(step) {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("Next") {
                             withAnimation { step += 1 }

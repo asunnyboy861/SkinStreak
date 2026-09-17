@@ -16,6 +16,14 @@ struct SettingsView: View {
     private var profile: UserProfile? { profiles.first }
     private var hasKey: Bool { GLMClient.hasKey }
 
+    // Must match OnboardingView's option values exactly — otherwise the pickers render blank.
+    private static let skinTypeOptions = ["Oily", "Dry", "Combination", "Sensitive"]
+    private static let goalOptions = ["Clear acne", "Even tone", "Calm redness", "Smooth texture", "General glow"]
+
+    private func normalize(_ value: String, options: [String], fallback: String) -> String {
+        options.first { $0.caseInsensitiveCompare(value) == .orderedSame } ?? fallback
+    }
+
     var body: some View {
         NavigationStack {
             List {
@@ -198,19 +206,21 @@ struct SettingsView: View {
     private var profileSection: some View {
         Section("Your skin") {
             if let profile {
-                Picker("Skin type", selection: Binding(get: { profile.skinType }, set: { profile.skinType = $0 })) {
-                    Text("Dry").tag("dry")
-                    Text("Oily").tag("oily")
-                    Text("Combination").tag("combination")
-                    Text("Sensitive").tag("sensitive")
-                    Text("Acne-prone").tag("acne-prone")
+                Picker("Skin type", selection: Binding(
+                    get: { normalize(profile.skinType, options: Self.skinTypeOptions, fallback: "Combination") },
+                    set: { profile.skinType = $0 }
+                )) {
+                    ForEach(Self.skinTypeOptions, id: \.self) { option in
+                        Text(option).tag(option)
+                    }
                 }
-                Picker("Main goal", selection: Binding(get: { profile.goal }, set: { profile.goal = $0 })) {
-                    Text("General glow").tag("General glow")
-                    Text("Calm redness").tag("Calm redness")
-                    Text("Fade dark spots").tag("Fade dark spots")
-                    Text("Clear breakouts").tag("Clear breakouts")
-                    Text("Smooth texture").tag("Smooth texture")
+                Picker("Main goal", selection: Binding(
+                    get: { normalize(profile.goal, options: Self.goalOptions, fallback: "General glow") },
+                    set: { profile.goal = $0 }
+                )) {
+                    ForEach(Self.goalOptions, id: \.self) { option in
+                        Text(option).tag(option)
+                    }
                 }
                 Picker("Fitzpatrick type", selection: Binding(get: { profile.fitzpatrick }, set: { profile.fitzpatrick = $0 })) {
                     Text("I — Very fair, always burns").tag(1)

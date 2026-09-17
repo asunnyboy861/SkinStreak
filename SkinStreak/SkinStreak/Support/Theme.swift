@@ -109,6 +109,11 @@ struct ActiveChip: View {
 enum Haptics {
     @MainActor
     static func success() {
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+    }
+
+    @MainActor
+    static func warning() {
+        UINotificationFeedbackGenerator().notificationOccurred(.warning)
     }
 }

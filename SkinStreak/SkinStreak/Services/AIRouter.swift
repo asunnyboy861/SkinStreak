@@ -87,7 +87,7 @@ enum AIRouter {
         var glmError: Error?
         if GLMClient.hasKey {
             do {
-                let raw = try await glmDeepScanJSON(imageData: imageData, metrics: metrics, fitzpatrick: fitzpatrick)
+                let raw = try await glmDeepScanJSON(imageData: imageData, metrics: metrics, fitzpatrick: fitzpatrick, cabinet: cabinet)
                 let report = try decodeDeepReport(raw)
                 var droppedReason: String?
                 var finalReport = report
@@ -127,7 +127,7 @@ enum AIRouter {
         return DeepScanResult(report: report, usedGLM: false, label: "Coach note", adjustmentDroppedReason: nil)
     }
 
-    private static func glmDeepScanJSON(imageData: Data, metrics: SkinMetrics, fitzpatrick: Int) async throws -> String {
+    private static func glmDeepScanJSON(imageData: Data, metrics: SkinMetrics, fitzpatrick: Int, cabinet: [Product]) async throws -> String {
         let base64 = (UIImage(data: imageData)?.jpegData(compressionQuality: 0.7) ?? imageData).base64EncodedString()
         let system = """
         You are SkinStreak's skincare coach for a wellness app (never medical advice). \
@@ -137,7 +137,7 @@ enum AIRouter {
         """
         let user = """
         Fitzpatrick type \(fitzpatrick). On-device measured values (do not restate): redness \(metrics.rednessPct)%, texture variance \(metrics.textureVar), \(metrics.spotCount) spots. \
-        Current cabinet actives: \(cabinetActivesSummary()). \
+        Current cabinet: \(cabinetActivesSummary(cabinet: cabinet)). \
         Give a deep qualitative skin observation. General wellness info, not medical advice.
         """
         return try await GLMClient.chatJSON(system: system, user: user, imageBase64: base64)
@@ -166,8 +166,13 @@ enum AIRouter {
         return nil
     }
 
-    private static func cabinetActivesSummary() -> String {
-        "logged locally"
+    private static func cabinetActivesSummary(cabinet: [Product]) -> String {
+        guard !cabinet.isEmpty else { return "none logged yet" }
+        let lines = cabinet.prefix(12).map { product in
+            let actives = product.actives.isEmpty ? "no recognized actives" : "actives: \(product.actives.joined(separator: ", "))"
+            return "- \(product.name) (\(actives))"
+        }
+        return "\n" + lines.joined(separator: "\n")
     }
 
     #if canImport(FoundationModels)
